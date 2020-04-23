@@ -6,38 +6,31 @@ namespace DefaultNamespace
     {
         
     }
-    
-    public class Customer
+
+    public abstract class EntityBase
     {
         public long Id { get; set; }
-        public string Description { get; set; }
 
-        public Customer()
+        public EntityBase()
         {
             Id = CalculateId();
         }
-
+        
         private long CalculateId()
         {
             long id = DateTime.Now.Ticks;
             return id;
         }
     }
+    
+    public class Customer : EntityBase
+    {
+        public string Description { get; set; }
+    }
 
     public class Store
     {
-        public long Id { get; set; }
-
-        public Store()
-        {
-            Id = CalculateId();
-        }
-
-        private long CalculateId()
-        {
-            long id = DateTime.Now.Ticks;
-            return id;
-        }
+       //Что-то для этого класса
     }
 
 }
