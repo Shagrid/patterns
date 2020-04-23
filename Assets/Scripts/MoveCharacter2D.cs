@@ -21,28 +21,20 @@ public sealed class MoveCharacter2D : MonoBehaviour
         _controllerRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    public void Moving(float moveHorizontal)
     {
-        var moveHorizontal = 0.0f;
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            moveHorizontal = 1.0f;
-            Flip(-1.0f);
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            moveHorizontal = -1.0f;
-            Flip(1.0f);
-        }
-
+        Flip(-moveHorizontal);
         _movementInput.Set(moveHorizontal, 0.0f);
+    }
 
-        if (!_isJumping && Input.GetKeyDown(KeyCode.Space))
+    public void Jump()
+    {
+        if (!_isJumping)
         {
             _jumpInput = true;
         }
     }
+    
 
     private void FixedUpdate()
     {
